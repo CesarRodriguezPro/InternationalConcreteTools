@@ -1,0 +1,6 @@
+*.pyc
+.vs
+.vscode
+DjangoEnv
+db.sqlite3
+.idea

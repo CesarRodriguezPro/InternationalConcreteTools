@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Profile
+{% endblock title %}
+    
+
+{% block content %}
+<div >
+    <div >
+        <img  src="{{user.image.url}}">
+        <div>
+            <h2>{{user.username}}</h2>
+            <p>{{user.email}}</p>
+            <p>{{user.image.url}}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

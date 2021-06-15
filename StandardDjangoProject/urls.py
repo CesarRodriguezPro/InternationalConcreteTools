@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('', include('public_area.urls', namespace='public_area')),
     path('private_area/', include('private_area.urls', namespace='private_area')),
+    path('tools/', include('tools.urls', namespace='tools')),
 ]
 
 if settings.DEBUG:

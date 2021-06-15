@@ -1,0 +1,14 @@
+{% extends 'tools/create_or_update_tool/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Tools - {{ user.first_name }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% csrf_token %}
+    {{ form|crispy }}
+</div>
+
+{% endblock %}

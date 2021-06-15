@@ -19,6 +19,8 @@ TEMPLATES_DIRS = [
     os.path.join(BASE_DIR, 'accounts', 'templates'),
     os.path.join(BASE_DIR, 'private_area', 'templates'),
     os.path.join(BASE_DIR, 'public_area', 'templates'),
+    os.path.join(BASE_DIR, 'tools', 'templates'),
+    os.path.join(BASE_DIR, 'locations', 'templates'),
 ]
 
 # Quick-start development settings - unsuitable for production
@@ -43,9 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+
+    # sections
     'accounts',
     'private_area',
     'public_area',
+    'tools',
+    'locations',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -139,8 +145,8 @@ STATICFILES_DIRS = STATIC_DIR
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # redirect paths
-LOGIN_REDIRECT_URL = 'user_area'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'private_area:private_area'
+LOGOUT_REDIRECT_URL = 'accounts:login'
 LOGIN_URL = 'accounts:login'
 
 AUTH_USER_MODEL = 'accounts.User'

@@ -1,0 +1,49 @@
+{% extends 'private_area/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Locations View
+{% endblock title %}
+
+{% block content %}
+
+<div class="container-flu">
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-header card-header-success">
+                <h4 class="card-title">Locations</h4>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-hover" id="StandardTable">
+                    <thead class="text-danger">
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Code</td>
+                    <td>Actions</td>
+                    </thead>
+                    <tbody>
+                        {% for items in object_list %}
+                            <tr>
+                            <td>{{ items.name }}</td>
+                            <td>{{ items.address }}</td>
+                            <td>{{ items.code }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'locations:updateView' items.pk %}" class="btn btn-warning btn-sm ">Update</a>
+                                    <a href="{% url 'locations:deleteView' items.pk %}" class="btn btn-danger btn-sm ">delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{% url 'locations:create' %}">Create New Location</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 'components/paginate_index.html' %}
+
+
+{% endblock %}

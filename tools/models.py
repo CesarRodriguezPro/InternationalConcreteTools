@@ -1,6 +1,6 @@
 from django.db import models
 from accounts.models import User
-
+from locations.models import Locations
 
 class Type(models.Model):
     name = models.CharField(max_length=50)
@@ -16,6 +16,7 @@ class Tool(models.Model):
     quantity = models.IntegerField(default=1)
     active = models.BooleanField(default=True)
     current_user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    current_location = models.ForeignKey(Locations, on_delete=models.DO_NOTHING)
     date_created = models.DateTimeField(auto_created=True)
     date_updated = models.DateTimeField()
 

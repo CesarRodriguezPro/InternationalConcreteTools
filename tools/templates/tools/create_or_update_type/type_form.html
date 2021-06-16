@@ -1,4 +1,4 @@
-{% extends 'tools/create_or_update_tool/base.html' %}
+{% extends 'private_area/base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}
@@ -11,11 +11,8 @@ Tools - {{ user.first_name }}
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Add" class="btn btn-success">
-        <a class="btn btn-success" href="{% url 'tools:create_type' %}">Add New Types</a>
+        <a class="btn btn-success" href="{% url 'tools:create_tool' %}">Back</a>
     </form>
-
-
-
 </div>
 
 {% endblock %}

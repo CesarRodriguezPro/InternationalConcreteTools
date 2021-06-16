@@ -1,0 +1,9 @@
+{% if messages %}
+  {% for message in messages %}
+    <div class="card bg-{{ message.tags }} text-white shadow">
+        <div class="card-body">
+            {{ message }}
+        </div>
+    </div>
+  {% endfor %}
+{% endif %}

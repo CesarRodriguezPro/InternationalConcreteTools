@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('public_area.urls', namespace='public_area')),
     path('private_area/', include('private_area.urls', namespace='private_area')),
     path('tools/', include('tools.urls', namespace='tools')),
+    path('locations/', include('locations.urls', namespace='locations')),
 ]
 
 if settings.DEBUG:

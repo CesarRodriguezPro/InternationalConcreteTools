@@ -26,6 +26,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
               <div id="content">
                 {% include 'private_area/components/topbar.html' %}
+                {% include 'components/messages.html' %}
                 {% block content %}
                 {% endblock %}
               </div>
@@ -46,7 +47,7 @@
 
     <SCRIPT>
     $(document).ready(function() {
-        $('#AllTools').DataTable();
+        $('#StandardTable').DataTable();
     });
     </SCRIPT>
 

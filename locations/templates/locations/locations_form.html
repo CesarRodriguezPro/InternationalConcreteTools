@@ -1,0 +1,18 @@
+{% extends 'private_area/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create A Location.
+{% endblock title %}
+
+{% block content %}
+<div class='container'>
+    <h3>New Location</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type='submit' class='btn btn-primary' value='Summit'>
+        <a  href="{% url 'locations:listView' %}" class='btn btn-secondary'>Back</a>
+    </form>
+</div>
+{% endblock content %}

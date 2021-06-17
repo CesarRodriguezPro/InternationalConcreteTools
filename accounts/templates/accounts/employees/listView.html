@@ -1,0 +1,60 @@
+{% extends 'private_area/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Locations View
+{% endblock title %}
+
+{% block content %}
+
+<div class='container'>
+
+
+
+    <div class="card card-stats">
+
+        <div class="card-header card-header-info card-header-icon">
+          <h3 class="card-title">Users</h3>
+        </div>
+
+        <div class="card-body table-responsive">
+            <table class="table table-hover" id="StandardTable">
+                <thead class="text-danger">
+                    <td>#</td>
+                    <td>Name</td>
+                    <td>Actions</td>
+                </thead>
+                <tbody>
+                    {% for items in object_list %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td><h4>{{ items }}</h4></td>
+                        <td>
+                            {% if user.is_admin %}
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'accounts:password_update' items.pk %}" class="btn btn-primary btn-sm ">Update Password</a>
+                                    <a href="{% url 'accounts:updateView' items.pk %}" class="btn btn-warning btn-sm ">Update</a>
+                                    <a href="{% url 'accounts:deleteView' items.pk %}" class="btn btn-danger btn-sm ">delete</a>
+                                </div>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                        <li>No Accounts yet.</li>
+                    {% endfor %}
+                </tbody>
+            </table>
+                <div class="btn-group" role="group">
+                    <a class="btn btn-success" href="{% url 'locations:listView' %}">Locations</a>
+                    <a class="btn btn-info" href="{% url 'accounts:signup' %}">Create a new User</a>
+                 </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
+
+
+

@@ -11,7 +11,7 @@ class Type(models.Model):
 
 class Tool(models.Model):
     code = models.CharField(max_length=225, unique=True)
-    type = models.ForeignKey(Type, on_delete=models.DO_NOTHING, null=True, blank=True)
+    type = models.ForeignKey(Type, on_delete=models.DO_NOTHING, null=True, blank=True )
     tags = models.TextField(blank=True, null=True)
     quantity = models.IntegerField(default=1)
     active = models.BooleanField(default=True)
@@ -21,7 +21,7 @@ class Tool(models.Model):
     date_updated = models.DateTimeField()
 
     def __str__(self):
-        return f'{self.type.name} | current user: {self.current_user} '
+        return f'{self.type.name} | current user: {self.current_user} in {self.current_location} '
 
 
 

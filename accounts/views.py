@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class SignUp(SuccessMessageMixin, CreateView):
     form_class = UserCreateForm
-    success_url = reverse_lazy('accounts:login')
+    success_url = reverse_lazy('accounts:signup')
     template_name = 'accounts/signup.html'
     success_message = 'You Successfully Sign Up'
 

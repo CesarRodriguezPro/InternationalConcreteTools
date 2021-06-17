@@ -35,6 +35,7 @@ class CreateTool(LoginRequiredMixin, View):
         return render(request, 'tools/create_or_update_tool/create_tool.html')
 
 
+#  Types Views
 class CreateType(LoginRequiredMixin, View):
 
     def get(self, request):
@@ -53,7 +54,6 @@ class CreateType(LoginRequiredMixin, View):
         return redirect('tools:create_type')
 
 
-#  Types Views
 class ListViewType(LoginRequiredMixin, View):
 
     def get(self, request):

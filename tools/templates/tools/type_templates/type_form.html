@@ -11,7 +11,7 @@ Tools - {{ user.first_name }}
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Add" class="btn btn-success">
-        <a class="btn btn-success" href="{% url 'tools:create_tool' %}">Back</a>
+        <a class="btn btn-success" href="{% url 'tools:list_type' %}">All Items</a>
     </form>
 </div>
 

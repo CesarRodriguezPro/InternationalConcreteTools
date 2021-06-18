@@ -9,7 +9,9 @@ Tools - {{ user.first_name }}
 <div class="container">
     <form method="post">
         {% csrf_token %}
+        <input type="file" accept="image/*;capture=camera">
         {{ form|crispy }}
+
         <input type="submit" value="Add" class="btn btn-success">
         <a class="btn btn-success" href="{% url 'tools:create_type' %}">Add New Types</a>
     </form>

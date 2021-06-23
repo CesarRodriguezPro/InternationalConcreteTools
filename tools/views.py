@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View,UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Tool, Type
-from .forms import CreateToolForm, CreateTypeForm
+from .forms import CreateTypeForm
 from django.contrib.messages import success, error, views
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -21,18 +21,13 @@ class Home(LoginRequiredMixin, View):
 class CreateTool(LoginRequiredMixin, View):
 
     def get(self, request):
-        context = {
-            'form': CreateToolForm(),
-        }
-        return render(request, 'tools/create_or_update_tool/create_tool.html', context)
+
+        return render(request, 'tools/create_or_update_tool/create_tool.html', {'types': Type.objects.all()})
 
     def post(self,request):
-        context = {
-            'form': CreateToolForm(),
-        }
         form_data = request.POST
         print(form_data)
-        return render(request, 'tools/create_or_update_tool/create_tool.html')
+        return render(request, 'tools/create_or_update_tool/create_tool.html', {'types': Type.objects.all()})
 
 
 #  Types Views

@@ -21,7 +21,6 @@ class Home(LoginRequiredMixin, View):
 class CreateTool(LoginRequiredMixin, View):
 
     def get(self, request):
-
         return render(request, 'tools/create_or_update_tool/create_tool.html', {'types': Type.objects.all()})
 
     def post(self,request):
@@ -33,7 +32,9 @@ class CreateTool(LoginRequiredMixin, View):
 #  Types Views
 class CreateType(LoginRequiredMixin, View):
 
-    def get(self, request):
+    def get(self, request, code):
+
+        print(f"--------------------->>> {code}")
         context = {
             'form': CreateTypeForm(),
         }

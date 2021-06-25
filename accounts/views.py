@@ -3,6 +3,7 @@ from .forms import UserCreateForm
 from django.views.generic import CreateView, TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import User
 
 
 class SignUp(SuccessMessageMixin, CreateView):

@@ -8,80 +8,83 @@
 
 <div class="container-fluid">
 
+    <div class="row align-self-center">
+        <div class="col-6">
+            <div class="card">
 
-    </div>
+                <div class="card-header card-header-info card-header-icon">
+                    {% if user.is_admin %}
+                  <h3 class="card-title">Latest Tools Activity </h3>
+                    {% else %}
+                    <h3 class="card-title">Latest Tools Received </h3>
+                    {% endif %}
+                </div>
 
-<div class="row">
-    <div class="col">
-    <div class="card card-stats">
-
-        <div class="card-header card-header-info card-header-icon">
-            {% if user.is_admin %}
-          <h3 class="card-title">Latest Tools Activity </h3>
-            {% else %}
-            <h3 class="card-title">Latest Tools Received </h3>
-            {% endif %}
-        </div>
-
-        <div class="card-body table-responsive">
-            <table class="table table-hover" id="StandardTable">
-                <thead class="text-danger">
-                    <td>#</td>
-                    <td>Type</td>
-                <td>quantity</td>
-                <td>Current User</td>
-                <td>Current Location</td>
-                <td>Last Update</td>
-
-                </thead>
-                <tbody>
-                    {% for i in object_list %}
-                        <tr>
-                            <td>{{forloop.counter}}</td>
-                                 <td>{{i.type}}</td>
-                                <td>{{i.quantity}}</td>
-                                <td>{{i.current_user}}</td>
-                                <td>{{i.current_location}}</td>
-                                <td>{{i.date_updated}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-</div>
-    <div class="col">
-        <div class="card card-stats">
-
-            <div class="card-header card-header-info card-header-icon">
-              <h3 class="card-title">Total Tools</h3>
-            </div>
-
-            <div class="card-body table-responsive">
-                <table class="table table-hover">
-                    <thead class="text-danger">
-                        <td>#</td>
-                        <td>Type</td>
+                <div class="card-body table-responsive">
+                    <table class="table table-hover" id="StandardTable">
+                        <thead class="text-danger">
+                            <td>#</td>
+                            <td>Type</td>
                         <td>quantity</td>
+                        <td>Current User</td>
+                        <td>Current Location</td>
+                        <td>Last Update</td>
 
-                    </thead>
-                    <tbody>
-                        {% for i in current_tools_type %}
-                            <tr>
-                                <td>{{forloop.counter}}</td>
-                                <td>{{i.type}}</td>
-                                <td>{{i.id__count}}</td>
+                        </thead>
+                        <tbody>
+                            {% for i in object_list %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                         <td>{{i.type}}</td>
+                                        <td>{{i.quantity}}</td>
+                                        <td>{{i.current_user}}</td>
+                                        <td>{{i.current_location}}</td>
+                                        <td>{{i.date_updated}}</td>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
+            </div>
+        </div>
+
+
+        <div class="col-6">
+            <div class="card ">
+
+                <div class="card-header card-header-info card-header-icon">
+                  <h3 class="card-title">Total Tools</h3>
+                </div>
+
+                <div class="card-body table-responsive">
+                    <table class="table table-hover">
+                        <thead class="text-danger">
+                            <td>#</td>
+                            <td>Type</td>
+                            <td>quantity</td>
+
+                        </thead>
+                        <tbody>
+                            {% for i in current_tools_type %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.type}}</td>
+                                    <td>{{i.id__count}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
     </div>
 
-
 </div>
-{{ current_tools_type }}
+
+
+
+
+
 {% endblock %}

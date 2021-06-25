@@ -9,6 +9,7 @@ urlpatterns = [
     #  basic Tools
     path('',Home.as_view(), name='home'),
     path('create_tool',CreateTool.as_view(), name='create_tool'),
+    path('create_tool/<code>', CreateTool.as_view(), name='create_tool'),
 
     # for types
     path('create_type', CreateType.as_view(), name='create_type'),

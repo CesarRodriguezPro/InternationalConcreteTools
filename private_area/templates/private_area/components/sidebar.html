@@ -19,7 +19,7 @@
         </a>
     </li>
 
-        {% if user.is_admin %}
+    {% if user.is_admin %}
     <!-- Divider -->
     <hr class="sidebar-divider">
         <li class="nav-item">
@@ -40,13 +40,19 @@
                 <span>Tools</span>
             </a>
         </li>
+    {% endif %}
 
-    {% endif %}
-    {% if user.is_admin  %}
-        <a class="btn btn-success " href="{% url 'tools:create_tool' %}">Receive or Create Tool</a>
-    {% else %}
-        <a class="btn btn-success " href="{% url 'tools:create_tool' %}">Receive Tool</a>
-    {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ temp_image_tool }}
+            {% if user.is_admin  %}
+                <button type="submit">Update Or Create</button>
+            {% else %}
+                <button type="submit">Receive</button>
+            {% endif %}
+        </form>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

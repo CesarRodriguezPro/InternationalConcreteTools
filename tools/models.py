@@ -1,6 +1,9 @@
 from django.db import models
 from accounts.models import User
 from locations.models import Locations
+from StandardDjangoProject.settings import MEDIA_ROOT
+import os
+
 
 class Type(models.Model):
     name = models.CharField(max_length=50)
@@ -22,6 +25,11 @@ class Tool(models.Model):
 
     def __str__(self):
         return f'{self.type.name} | current user: {self.current_user} in {self.current_location} '
+
+
+class TempImage(models.Model):
+    image = models.ImageField(upload_to='temp_image/', blank=True, null=True)
+
 
 
 

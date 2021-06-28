@@ -43,6 +43,7 @@ class AccountsUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
               'last_name',
               'email',
               'image',
+              'location',
               'is_admin',
               'is_supervisor',
               )

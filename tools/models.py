@@ -19,8 +19,8 @@ class Tool(models.Model):
     quantity = models.IntegerField(default=1)
     active = models.BooleanField(default=True)
     current_user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    current_location = models.ForeignKey(Locations, on_delete=models.DO_NOTHING)
-    date_created = models.DateTimeField(auto_created=True)
+    current_location = models.ForeignKey(Locations, on_delete=models.DO_NOTHING, null=True, blank=True)
+    date_created = models.DateTimeField(auto_now=True)
     date_updated = models.DateTimeField()
 
     def __str__(self):

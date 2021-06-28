@@ -1,0 +1,50 @@
+{% extends 'tools/create_or_update_tool/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Tools - {{ user.first_name }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="h-100 p-5 bg-light border rounded-3">
+
+        <h4> Add New Tool </h4>
+
+        <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <input type="file" class="form-control" name="upload_file" accept="image/*;capture=camera">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="type">Type</span>
+            <select class="form-select" name="type" aria-label="Default select example">
+              <option selected>Please Choose One...</option>
+              {% for type in types %}
+                <option>{{type}}</option>
+              {% endfor %}
+            </select>
+        </div>
+
+         <div class="input-group mb-3">
+          <span class="input-group-text" id="tags">Tags</span>
+          <input type="text" name="tags" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Quantity</span>
+          <input type="text" class="form-control" name="quantity" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <br>
+
+        <input type="submit" value="Summit" class="btn btn-success">
+        <a class="btn btn-warning" href="{% url 'tools:create_type' %}">Add New Types</a>
+    </form>
+    </div>
+
+</div>
+
+{% endblock %}

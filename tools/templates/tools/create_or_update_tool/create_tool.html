@@ -7,36 +7,21 @@ Tools - {{ user.first_name }}
 
 {% block content %}
 <div class="container">
+
     <div class="h-100 p-5 bg-light border rounded-3">
 
-        <h4> Add New Tool </h4>
+        {% if form.code is None %}
+            <h4> Add New Tool </h4>
+            <h6>Code Read {{code}} Please Confirm.</h6>
+        {% else %}
+            <h4> Add New Tool </h4>
+            <h6>We could Read the image please add the Code Manually</h6>
+        {% endif %}
 
         <form method="post">
         {% csrf_token %}
 
-        <div class="mb-3">
-          <input type="file" class="form-control" name="upload_file" accept="image/*;capture=camera">
-        </div>
-
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="type">Type</span>
-            <select class="form-select" name="type" aria-label="Default select example">
-              <option selected>Please Choose One...</option>
-              {% for type in types %}
-                <option>{{type}}</option>
-              {% endfor %}
-            </select>
-        </div>
-
-         <div class="input-group mb-3">
-          <span class="input-group-text" id="tags">Tags</span>
-          <input type="text" name="tags" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Quantity</span>
-          <input type="text" class="form-control" name="quantity" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
+        {{form|crispy}}
 
         <br>
 

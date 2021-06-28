@@ -1,17 +1,17 @@
 import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from tools.views import Tool
 from tools.forms import TempImageForm
 from django.db.models import Count
 from tools.models import TempImage
 from tools.data_processing.barcode_scanner import get_barcode_info
-from django.contrib.messages import ERROR
-from pylibdmtx.pylibdmtx import decode
+from django.contrib.messages import ERROR,SUCCESS
+from tools.models import Tool
 
 
 class PrivateArea(LoginRequiredMixin, View):
+
 
     def get(self, request):
         if request.user.is_admin:
@@ -30,13 +30,20 @@ class PrivateArea(LoginRequiredMixin, View):
 
 
     def post(self, request):
+
         form = TempImageForm(request.POST, request.FILES)
         if form.is_valid():
+
             image = form.cleaned_data.get("image")
             obj = TempImage(image = image)
             obj.save()
-            BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            ## working in this part
+            image_data, image_path = get_barcode_info(obj)
 
-        return redirect("private_area:private_area")
+            if image_data:
+                try:
+                    tool = Tool.objects.get(code=image_data)
+                    return redirect(f"{reverse('tools:receive_tool')}{image_data}")
+                except Tool.DoesNotExist:
+                    return redirect(f"{reverse('tools:create_tool')}/{image_data}")
+        return redirect(f"{reverse('tools:create_tool')}")
 

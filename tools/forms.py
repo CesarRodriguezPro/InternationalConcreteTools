@@ -7,6 +7,15 @@ class CreateTypeForm(forms.ModelForm):
         model = Type
         fields = '__all__'
 
+class CreateToolCodeForm(forms.ModelForm):
+    class Meta:
+        model = Tool
+        fields = ['type', 'tags', 'quantity', 'active']
+
+class CreateToolNoCodeForm(forms.ModelForm):
+    class Meta:
+        model = Tool
+        fields = ['code', 'type', 'tags', 'quantity', 'active']
 
 class TempImageForm(forms.Form):
     image = forms.ImageField()

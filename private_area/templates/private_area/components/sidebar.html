@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -45,11 +46,11 @@
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ temp_image_tool }}
+            {{ temp_image_tool|crispy }}
             {% if user.is_admin  %}
-                <button type="submit">Update Or Create</button>
+                <button class="btn btn-success" type="submit">Update Or Create</button>
             {% else %}
-                <button type="submit">Receive</button>
+                <button class="btn btn-success" type="submit">Receive</button>
             {% endif %}
         </form>
 

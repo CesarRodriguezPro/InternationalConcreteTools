@@ -1,11 +1,18 @@
-import cv2
 from pylibdmtx.pylibdmtx import decode
-from ..models import Tool
+from PIL import Image
+import os
 
 
-def get_barcode_info(stream_pic):
+def get_barcode_info(picture_obj):
+
+
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    picture_path = BASE_DIR + os.path.normpath(picture_obj.image.url)
+    result = decode(Image.open(picture_path))
+
     try:
-        name_of = data[0][0].decode('UTF-8')
-        return name_of
+        decode_data = str(result[0].data.decode('UTF-8'))
+        return decode_data, picture_path
+
     except IndexError:
-        return None
+        return None, None

@@ -25,6 +25,8 @@ urlpatterns = [
     path('private_area/', include('private_area.urls', namespace='private_area')),
     path('tools/', include('tools.urls', namespace='tools')),
     path('locations/', include('locations.urls', namespace='locations')),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include('api.urls', namespace='api')),
 ]
 
 if settings.DEBUG:

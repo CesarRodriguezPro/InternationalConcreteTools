@@ -44,15 +44,6 @@
     {% endif %}
 
 
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ temp_image_tool|crispy }}
-            {% if user.is_admin  %}
-                <button class="btn btn-success" type="submit">Update Or Create</button>
-            {% else %}
-                <button class="btn btn-success" type="submit">Receive</button>
-            {% endif %}
-        </form>
 
 
     <!-- Divider -->

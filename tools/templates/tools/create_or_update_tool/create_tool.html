@@ -6,7 +6,10 @@ Tools - {{ user.first_name }}
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div style="padding:10px">
+
+
+    <div class="container">
 
     <div class="h-100 p-5 bg-light border rounded-3">
 
@@ -24,11 +27,29 @@ Tools - {{ user.first_name }}
         {{form|crispy}}
 
         <br>
+        <div class="row">
+            <div class="col">
+                 <input type="submit" value="Summit" class="btn btn-success">
+            </div>
+            <div>
+                <br>
+            </div>
+             <div class="col">
+                 <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-warning" href="{% url 'tools:create_type' %}">Add New Types</a>
+                    <a class="btn btn-warning" href="{% url 'tools:list_type' %}">All Items</a>
+                 </div>
+             </div>
+        </div>
 
-        <input type="submit" value="Summit" class="btn btn-success">
-        <a class="btn btn-warning" href="{% url 'tools:create_type' %}">Add New Types</a>
+
+
     </form>
     </div>
+
+</div>
+
+
 
 </div>
 

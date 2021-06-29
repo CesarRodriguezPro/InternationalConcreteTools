@@ -71,7 +71,7 @@ class ReceiveTool(LoginRequiredMixin, View):
 #  Types Views
 class CreateType(LoginRequiredMixin, View):
 
-    def get(self, request, code):
+    def get(self, request):
         context = {
             'form': CreateTypeForm(),
         }

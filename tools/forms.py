@@ -18,5 +18,12 @@ class CreateToolNoCodeForm(forms.ModelForm):
         fields = ['code', 'type', 'tags', 'quantity', 'active']
 
 class TempImageForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs.update({'class': 'form-control form-control-lg'})
+
     image = forms.ImageField()
+
+
+
 

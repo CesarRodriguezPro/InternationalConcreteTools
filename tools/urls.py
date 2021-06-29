@@ -15,7 +15,7 @@ urlpatterns = [
 
     # for types
     path('create_type/', CreateType.as_view(), name='create_type'),
-    path('list_type', ListViewType.as_view(), name='list_type'),
+    path('list_type/', ListViewType.as_view(), name='list_type'),
     path('update/<pk>/', UpdateType.as_view(), name='update_type'),
     path('delete/<pk>/', DeleteType.as_view(), name='delete_type'),
 ]

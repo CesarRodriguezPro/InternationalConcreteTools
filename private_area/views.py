@@ -6,7 +6,7 @@ from tools.forms import TempImageForm
 from django.db.models import Count
 from tools.models import TempImage
 from tools.data_processing.barcode_scanner import get_barcode_info
-from django.contrib.messages import ERROR,SUCCESS
+from django.contrib.messages import success,error
 from tools.models import Tool
 
 
@@ -14,6 +14,7 @@ class PrivateArea(LoginRequiredMixin, View):
 
 
     def get(self, request):
+
         if request.user.is_admin:
             data = Tool.objects.all().order_by('-date_updated')
             total_tools = Tool.objects.values("type").annotate(Count("id"))
@@ -26,6 +27,7 @@ class PrivateArea(LoginRequiredMixin, View):
             'current_tools_type': total_tools,
             'temp_image_tool':TempImageForm()
         }
+
         return render(request, 'private_area/index.html',context)
 
 

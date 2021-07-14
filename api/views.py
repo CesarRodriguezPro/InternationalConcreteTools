@@ -35,7 +35,6 @@ class UserRecordView(APIView):
 #  Tools Section
 class ToolListApiView(APIView):
 
-
     def get(self, request, *args, **kwargs ):
         tools = Tool.objects.all()
         serializer = ToolSerializer(tools, many=True)
@@ -61,10 +60,9 @@ class ToolListApiView(APIView):
 
 class ToolDetailApiView(APIView):
 
-
     def get_object(self, todo_id):
         try:
-            return Tool.objects.get(id=todo_id)
+            return Tool.objects.get(code=todo_id)
         except Tool.DoesNotExist:
             return None
 
@@ -116,7 +114,6 @@ class ToolDetailApiView(APIView):
 
 # Types Sections
 class ToolTypesListApiView(APIView):
-
 
     def get(self, request, *args, **kwargs):
         types = Type.objects.all()

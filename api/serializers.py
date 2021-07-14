@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 class ToolSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tool
-        fields = ["code", 'type', 'tags', 'quantity', 'active', 'current_user', 'current_location', 'date_updated']
+        fields = ["code", 'type', 'tags', 'quantity', 'active', 'current_user', 'current_location']
 
 
 class ToolTypeSerializer(serializers.ModelSerializer):

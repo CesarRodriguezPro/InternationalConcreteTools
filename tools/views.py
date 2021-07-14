@@ -43,7 +43,6 @@ class CreateTool(LoginRequiredMixin, View):
             active = True if form_data['active'] == 'on' else False,
             current_user = request.user,
             current_location = request.user.location,
-            date_updated = datetime.datetime.now()
         )
         tool.save()
         success(request, 'successfully Tool Created.')
@@ -55,7 +54,6 @@ class ReceiveTool(LoginRequiredMixin, View):
     def get(self, request, code=None):
         tool = Tool.objects.get(code=code)
         tool.current_user = request.user
-        tool.date_updated = datetime.datetime.now()
         tool.current_location = request.user.location
         tool.save()
         success(request, f"You Successfully receive {tool.type} id={tool.code}")

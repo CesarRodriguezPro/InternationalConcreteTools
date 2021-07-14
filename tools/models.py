@@ -25,10 +25,12 @@ class Tool(models.Model):
     date_updated = models.DateTimeField()
 
     def save(self, *args, **kwargs):
-        if not self.id:
-            self.created = datetime.datetime.now()
-        self.modified = datetime.datetime.now()
-        return super(User, self).save(*args, **kwargs)
+
+        if self.id:
+            self.date_updated = datetime.datetime.now()
+        else:
+            self.date_created = datetime.datetime.now()
+        
 
 
     def __str__(self):

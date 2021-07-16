@@ -61,6 +61,7 @@ class ReceiveTool(LoginRequiredMixin, View):
 
     def post(self,request):
         form_data = request.POST
+        ## working in this area
         print(form_data)
         return render(request, 'tools/create_or_update_tool/create_tool.html', {'types': Type.objects.all()})
 

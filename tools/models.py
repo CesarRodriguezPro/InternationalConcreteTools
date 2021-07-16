@@ -1,8 +1,6 @@
 from django.db import models
 from accounts.models import User
 from locations.models import Locations
-from StandardDjangoProject.settings import MEDIA_ROOT
-import os
 import datetime
 
 
@@ -21,18 +19,10 @@ class Tool(models.Model):
     active = models.BooleanField(default=True)
     current_user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     current_location = models.ForeignKey(Locations, on_delete=models.DO_NOTHING, null=True, blank=True)
-    date_created = models.DateTimeField(editable=False)
-    date_updated = models.DateTimeField()
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-
-        if self.id:
-            self.date_updated = datetime.datetime.now()
-        else:
-            self.date_created = datetime.datetime.now()
         
-
-
     def __str__(self):
         return f'{self.type.name} | current user: {self.current_user} in {self.current_location} '
 

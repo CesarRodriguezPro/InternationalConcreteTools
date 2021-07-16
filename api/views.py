@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
 from accounts.models import User
+from locations.models import Locations
 from tools.models import Tool, Type
 from .serializers import ToolSerializer, ToolTypeSerializer, UserSerializer
 
@@ -13,9 +14,8 @@ class UserRecordView(APIView):
 
     permission_classes = [IsAdminUser]
 
-    def get(self, format=None):
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
+    def get(self, request):
+        serializer = UserSerializer(request.user)
         return Response(serializer.data)
 
     def post(self, request):
@@ -44,12 +44,11 @@ class ToolListApiView(APIView):
         data = {
             'code' :request.data.get('code'),
             'type' :request.data.get('type'),
-            'tags' :request.data.get('tags'),
+            'tags':request.data.get('tags'),
             'quantity' :request.data.get('quantity'),
             'active' :request.data.get('active'),
             'current_user' :request.data.get('current_user'),
             'current_location' :request.data.get('current_location'),
-            'date_updated' :request.data.get('date_updated'),
         }
         serializer = ToolSerializer(data=data)
         if serializer.is_valid():
@@ -90,7 +89,6 @@ class ToolDetailApiView(APIView):
                 'active': request.data.get('active'),
                 'current_user': request.data.get('current_user'),
                 'current_location': request.data.get('current_location'),
-                'date_updated': request.data.get('date_updated'),
             }
 
             serializer = ToolSerializer(instance=todo_instance, data=data, partial=True)
@@ -132,7 +130,6 @@ class ToolTypesListApiView(APIView):
 
 
 class ToolTypesDetailApiView(APIView):
-
 
     def get_object(self, type_id):
         try:

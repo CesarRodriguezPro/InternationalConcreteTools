@@ -16,8 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'first_name',
             'last_name',
-            'email',
-            'password',
+            'pk',
+            'location',
         )
         validators = [
             UniqueTogetherValidator(
@@ -28,6 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ToolSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Tool
         fields = ["code", 'type', 'tags', 'quantity', 'active', 'current_user', 'current_location']

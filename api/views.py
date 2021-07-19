@@ -42,13 +42,13 @@ class ToolListApiView(APIView):
 
     def post(self, request, *args, **kwargs):
         data = {
-            'code' :request.data.get('code'),
-            'type' :request.data.get('type'),
-            'tags':request.data.get('tags'),
-            'quantity' :request.data.get('quantity'),
-            'active' :request.data.get('active'),
-            'current_user' :request.data.get('current_user'),
-            'current_location' :request.data.get('current_location'),
+            'code': request.data.get('code'),
+            'type': request.data.get('type'),
+            'tags': request.data.get('tags'),
+            'quantity': request.data.get('quantity'),
+            'active': request.data.get('active'),
+            'current_user': request.data.get('current_user'),
+            'current_location': request.data.get('current_location'),
         }
         serializer = ToolSerializer(data=data)
         if serializer.is_valid():
@@ -107,7 +107,7 @@ class ToolDetailApiView(APIView):
         if todo_instance:
             todo_instance.delete()
             return Response({"res": "Object deleted!"}, status=status.HTTP_200_OK)
-        return Response({"res": "Object with todo id does not exists"},status=status.HTTP_400_BAD_REQUEST)
+        return Response({"res": "Object with todo id does not exists"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Types Sections

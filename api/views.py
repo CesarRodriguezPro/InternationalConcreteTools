@@ -3,8 +3,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAdminUser
-from accounts.models import User
-from locations.models import Locations
 from tools.models import Tool, Type
 from .serializers import ToolSerializer, ToolTypeSerializer, UserSerializer
 

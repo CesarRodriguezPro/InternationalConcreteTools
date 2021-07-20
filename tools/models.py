@@ -1,7 +1,6 @@
 from django.db import models
 from accounts.models import User
 from locations.models import Locations
-import datetime
 
 
 class Type(models.Model):
@@ -22,7 +21,6 @@ class Tool(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-        
     def __str__(self):
         return f'{self.type.name} | current user: {self.current_user} in {self.current_location} '
 

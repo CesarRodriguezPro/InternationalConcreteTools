@@ -37,6 +37,6 @@ class ToolSerializer(serializers.ModelSerializer):
 class ToolTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Type
-        fields = ['name']
+        fields = ["pk", 'name']
 
 
